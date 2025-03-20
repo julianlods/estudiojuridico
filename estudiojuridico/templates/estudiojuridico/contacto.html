@@ -1,0 +1,33 @@
+{% extends 'estudiojuridico/base.html' %}
+
+{% block content %}
+<div class="container text-center">
+    <p class="mb-3">Envianos tu mensaje y nos pondremos en contacto a la brevedad.</p>
+
+    <div class="row justify-content-center">
+        <div class="col-md-7">  <!-- Antes era col-md-5, ahora es 40% más ancho -->
+            <form method="post" class="p-3 border rounded bg-light shadow-sm">
+                {% csrf_token %}
+
+                <div class="mb-2">
+                    <input type="text" id="nombre" name="nombre" class="form-control form-control-sm" placeholder="Nombre y Apellido" required>
+                </div>
+
+                <div class="mb-2">
+                    <input type="text" id="telefono" name="telefono" class="form-control form-control-sm" placeholder="Teléfono" required>
+                </div>
+
+                <div class="mb-2">
+                    <input type="email" id="email" name="email" class="form-control form-control-sm" placeholder="Email" required>
+                </div>
+
+                <div class="mb-2">
+                    <textarea id="mensaje" name="mensaje" class="form-control form-control-sm" rows="2" placeholder="Escribe tu mensaje..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-sm w-100">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

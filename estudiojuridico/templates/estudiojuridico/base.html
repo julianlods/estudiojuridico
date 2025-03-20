@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Estudio Jurídico</title>
+
+    {% load static %}
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        body { background-color: #f8f9fa; font-family: Arial, sans-serif; }
+        .container { max-width: 900px; margin: auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+
+        /* --- HEADER Y LOGO --- */
+        .banner-header {
+            background-color: #090d13; /* Color exacto tomado de la imagen */
+            padding: 10px 0; /* Espaciado superior e inferior */
+            display: flex;
+            justify-content: center; /* Centrar la imagen */
+        }
+        .banner-logo {
+            width: auto; /* Mantiene la proporción original */
+            height: 180px; /* Ajusta el alto a tu preferencia */
+            max-width: 90%; /* Asegura que no se pase del ancho total */
+        }
+
+        /* --- MENÚ DE NAVEGACIÓN --- */
+        nav { background-color: #004488; padding: 10px; text-align: center; }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: normal; /* Normal por defecto */
+        }
+        nav a.active {
+            font-weight: bold; /* Negrita cuando está activo */
+        }
+        nav a:hover {
+            text-decoration: none; /* No subrayar al pasar el mouse */
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            background-color: #090d13; /* Mismo color del header */
+            color: white;
+            text-align: center;
+            padding: 8px 0; /* Más compacto */
+            font-size: 14px; /* Texto más pequeño */
+        }
+        .footer a {
+            color: #ffffff; /* Enlaces en blanco */
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header class="banner-header">
+        <img src="{% static 'estudiojuridico/images/banner-logo.png' %}" alt="Estudio Jurídico" class="banner-logo">
+    </header>
+
+    <!-- Menú de navegación -->
+    <nav>
+        <a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Inicio</a>
+        <a href="{% url 'servicios' %}" class="{% if request.path == '/servicios/' %}active{% endif %}">Servicios</a>
+        <a href="{% url 'quienes_somos' %}" class="{% if request.path == '/quienes-somos/' %}active{% endif %}">¿Quiénes Somos?</a>
+        <a href="{% url 'contacto' %}" class="{% if request.path == '/contacto/' %}active{% endif %}">Contacto</a>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Estudio Jurídico | <a href="mailto:contacto@estudiojuridico.com">contacto@estudiojuridico.com</a> | Tel: +54 11 1234-5678</p>
+        <p class="footer-links">
+            <a href="{% url 'home' %}">Inicio</a> | 
+            <a href="{% url 'servicios' %}">Servicios</a> | 
+            <a href="{% url 'quienes_somos' %}">¿Quiénes Somos?</a> | 
+            <a href="{% url 'contacto' %}">Contacto</a>
+        </p>
+    </footer>
+
+    <style>
+        .footer {
+            background-color: #090d13; /* Mismo color del header */
+            color: white;
+            text-align: center;
+            padding: 4px 0; /* Se reduce aún más el padding */
+            font-size: 12px; /* Texto más pequeño */
+            line-height: 1.2; /* Reduce la separación entre líneas */
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .footer a {
+            color: #ffffff; /* Enlaces en blanco */
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer-links {
+            margin-top: 5px; /* Espaciado entre las dos líneas */
+            font-size: 13px; /* Un poco más pequeño para que sea sutil */
+        }
+    </style>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
